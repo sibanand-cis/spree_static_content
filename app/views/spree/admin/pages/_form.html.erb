@@ -7,6 +7,18 @@
       <%= f.error_message_on :title %>
     <% end %>
 
+     <%= f.field_container :body do %>
+      <%= f.label :body %><span class="required">*</span><br />
+      <%#= f.text_area :body,:class => 'fullwidth title' %>
+
+      <%= f.cktext_area :body, :as => :ckeditor %>
+
+      <%= f.cktext_area  :body_de, :as => :ckeditor %> 
+
+
+
+      <%= f.error_message_on :body %>
+    <% end %>
 
     <%= f.field_container :slug do %>
       <%= f.label :slug %> <span class="required">*</span><br />
@@ -14,11 +26,7 @@
       <%= f.error_message_on :slug %>
     <% end %>
     
-    <%= f.field_container :body do %>
-      <%= f.label :body %><span class="required">*</span><br />
-      <%= f.text_area :body %>
-      <%= f.error_message_on :body %>
-    <% end %>
+   
     </div>
 
      <%= f.field_container :image do %>
@@ -87,3 +95,21 @@
 
   </div>
 </div>
+
+  <script type='text/javascript'>
+    $(document).ready(function(){
+        $("#spree_multi_lingual_dropdown").change(function(e){
+            e.preventDefault();
+            if($("#cke_page_body").css('display') == "none")    
+             { $("#cke_page_body").show();$("#cke_page_body_de").hide()}
+            else
+              {$("#cke_page_body").hide();$("#cke_page_body_de").show()}
+        })
+
+        CKEDITOR.on("instanceReady", function(event)
+          {
+               $("#cke_page_body_de").hide()
+          });
+
+    })
+  </script>
