@@ -13,7 +13,10 @@ class Spree::Page < ActiveRecord::Base
   before_save :update_positions_and_slug
 
   attr_accessible :title, :slug, :body, :meta_title, :meta_keywords, :meta_description, :layout, :foreign_link, :position, :show_in_sidebar, :show_in_header, :show_in_footer, :visible, :render_layout_as_partial,:image
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :image,
+    :url => "/system/:attachment/:id/:style/:basename.:extension",  
+    :path => ":rails_root/AppImages/:attachment/:id/:style/:basename.:extension" ,
+    :styles => { :medium => "300x300>", :thumb => "100x100>" }
   def self.by_slug(slug)
     slug = StaticPage::remove_spree_mount_point(slug)
     pages = self.arel_table
