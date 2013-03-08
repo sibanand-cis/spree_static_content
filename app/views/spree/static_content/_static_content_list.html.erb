@@ -8,10 +8,5 @@
 <% else %>
   <% page_uri = Rails.application.routes.named_routes[:spree].path.spec.to_s == '/' ? page.slug : Rails.application.routes.named_routes[:spree].path.spec.to_s + page.slug %>
   <li class="<%=(request.fullpath.gsub('//','/') == page_uri) ? 'selected_page' : 'not'%> "><%= link_to "+#{page.title}", page_uri  %></li>
-	<li><%=request.fullpath%></li>	
-	<li><%=(request.fullpath.gsub('//','/'))%></li>	
-  <li><%=page_uri%></li>
-  <li><%=Rails.application.routes.named_routes[:spree].path.spec.to_s%></li>
-
 <% end %>
 
