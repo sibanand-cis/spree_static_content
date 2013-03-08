@@ -1,11 +1,10 @@
 <% if page.foreign_link.present? %>
- 
-  	<% if page.show_in_header.present? %>
-  	<li class="<%= page.title == params[:path] ? 'selected_page' : '' %>">
-  	<%= link_to "+#{page.title}" , page.foreign_link, {:target => "_blank"} %></li>
-  	<%else%>
-  	<%= link_to page.title , page.foreign_link, {:target => "_blank"} %></li>
-  	<%end%>
+  <% if page.show_in_header.present? %>
+  <li class="<%= page.title == params[:path] ? 'selected_page' : '' %>">
+  <%= link_to "+#{page.title}" , page.foreign_link, {:target => "_blank"} %></li>
+  <%else%>
+  <%= link_to page.title , page.foreign_link, {:target => "_blank"} %></li>
+  <%end%>
 <% else %>
   <% page_uri = Rails.application.routes.named_routes[:spree].path.spec.to_s == '/' ? page.slug : Rails.application.routes.named_routes[:spree].path.spec.to_s + page.slug %>
   <li class="<%=(request.fullpath.gsub('//','/') == page_uri) ? 'selected_page' : 'not'%> "><%= link_to "+#{page.title}", page_uri  %></li>

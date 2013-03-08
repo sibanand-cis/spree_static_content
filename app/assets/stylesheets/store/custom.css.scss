@@ -1,0 +1,8 @@
+.selected_page{
+
+	background-color: #1BC4DE;
+  background-image: url("/assets/menu-active.png"); 
+  background-position: 0 bottom; 
+  background-repeat: repeat-x;
+  transition:color 300ms ease 0s, background-color 300ms ease 0s, opacity 300ms ease 0s;
+}
